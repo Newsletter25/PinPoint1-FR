@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PinPoint Game</title>
+    <style>
+        body {https://github.com/Newsletter25/PinPoint1-EN/blob/main/index.html
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .clue {
+            display: none;
+            margin: 10px;
+            font-size: 18px;
+        }
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        #hint {
+            font-size: 18px;
+            font-style: italic;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PinPoint Game</h1>
+    <p>Try to guess the category in 5 clues or less!</p>
+
+    <!-- Hint Message -->
+    <p id="hint">Hint: Types of _____________</p>
+
+    <div id="clues">
+        <p class="clue">Clue 1: Active</p>
+        <p class="clue">Clue 2: Passive</p>
+        <p class="clue">Clue 3: Outside</p>
+        <p class="clue">Clue 4: Nominee</p>
+        <p class="clue">Clue 5: De Facto</p>
+    </div>
+
+    <div>
+        <input type="text" id="guess" placeholder="Enter your guess">
+        <button onclick="checkGuess()">Submit Guess</button>
+    </div>
+
+    <p id="result"></p>
+    <p id="infoMessage" style="font-weight: bold;"></p>
+
+    <script>
+        let currentClue = 0;
+        const clues = document.querySelectorAll('.clue');
+        const correctAnswers = [
+            "director", "directors", 
+            "types of directors", "type of director", 
+            "types of director", "type of directors"
+        ];
+        let attempts = 0;
+        const maxAttempts = 5;
+
+        // Start the game by revealing the first clue
+        window.onload = function() {
+            revealClue();  // Reveal the first clue when the game starts
+        }
+
+        function revealClue() {
+            if (currentClue < clues.length) {
+                clues[currentClue].style.display = 'block';
+                currentClue++;
+            }
+        }
+
+        function checkGuess() {
+            const userGuess = document.getElementById("guess").value.trim().toLowerCase();
+            attempts++;
+
+            // Check if the user's guess matches any acceptable variation
+            if (correctAnswers.includes(userGuess)) {
+                document.getElementById("result").innerText = "Correct! For more information about this topic, refer to the … page / Pour plus d’informations à ce sujet, consulter la page";
+                document.getElementById("infoMessage").innerText = "";
+                disableInputs();
+            } else {
+                // Reveal the next clue automatically if the guess is wrong
+                if (currentClue < clues.length) {
+                    revealClue();
+                }
+
+                // If max attempts are reached, show the end message
+                if (attempts >= maxAttempts) {
+                    document.getElementById("result").innerText = "Incorrect, the correct answer is Types of Directors!";
+                    document.getElementById("infoMessage").innerText = "For more information about this topic, refer to the … page / Pour plus d’informations à ce sujet, consulter la page";
+                    disableInputs();
+                } else {
+                    document.getElementById("result").innerText = "Try again!";
+                }
+            }
+        }
+
+        function disableInputs() {
+            document.getElementById("guess").disabled = true;
+            document.querySelector("button[onclick='checkGuess()']").disabled = true;
+        }
+    </script>
+</body>
+</html>
