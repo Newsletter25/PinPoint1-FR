@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PinPoint Game</title>
+    <title>Jeu PinPoint</title>
     <style>
         body {https://github.com/Newsletter25/PinPoint1-EN/blob/main/index.html
             font-family: Arial, sans-serif;
@@ -29,22 +29,22 @@
 </head>
 <body>
     <h1>PinPoint Game</h1>
-    <p>Try to guess the category in 5 clues or less!</p>
+    <p>Devinez la catégorie en 5 indices ou moins !</p>
 
     <!-- Hint Message -->
-    <p id="hint">Hint: Types of _____________</p>
+    <p id="hint">Indice : Types de _____________</p>
 
     <div id="clues">
-        <p class="clue">Clue 1: Active</p>
-        <p class="clue">Clue 2: Passive</p>
-        <p class="clue">Clue 3: Outside</p>
-        <p class="clue">Clue 4: Nominee</p>
-        <p class="clue">Clue 5: De Facto</p>
+        <p class="clue">Clue 1: Actif</p>
+        <p class="clue">Clue 2: Passif</p>
+        <p class="clue">Clue 3: Externe</p>
+        <p class="clue">Clue 4: Désigné</p>
+        <p class="clue">Clue 5: De fait</p>
     </div>
 
     <div>
-        <input type="text" id="guess" placeholder="Enter your guess">
-        <button onclick="checkGuess()">Submit Guess</button>
+        <input type="text" id="guess" placeholder="Soumettre votre réponse">
+        <button onclick="checkGuess()">Soumettre une réponse</button>
     </div>
 
     <p id="result"></p>
@@ -54,9 +54,9 @@
         let currentClue = 0;
         const clues = document.querySelectorAll('.clue');
         const correctAnswers = [
-            "director", "directors", 
-            "types of directors", "type of director", 
-            "types of director", "type of directors"
+            "administrateur", "administrateurs", 
+            "types d’administrateurs", "type d’administrateur", 
+            "types d’administrateur", "type d’administrateurs"
         ];
         let attempts = 0;
         const maxAttempts = 5;
@@ -79,7 +79,7 @@
 
             // Check if the user's guess matches any acceptable variation
             if (correctAnswers.includes(userGuess)) {
-                document.getElementById("result").innerText = "Correct! For more information about this topic, refer to the … page / Pour plus d’informations à ce sujet, consulter la page";
+                document.getElementById("result").innerText = "Bonne réponse! Pour plus d’informations à ce sujet, consulter la page ______________";
                 document.getElementById("infoMessage").innerText = "";
                 disableInputs();
             } else {
@@ -90,11 +90,11 @@
 
                 // If max attempts are reached, show the end message
                 if (attempts >= maxAttempts) {
-                    document.getElementById("result").innerText = "Incorrect, the correct answer is Types of Directors!";
+                    document.getElementById("result").innerText = "Mauvaise réponse, la bonne réponse est types d'administrateurs!";
                     document.getElementById("infoMessage").innerText = "For more information about this topic, refer to the … page / Pour plus d’informations à ce sujet, consulter la page";
                     disableInputs();
                 } else {
-                    document.getElementById("result").innerText = "Try again!";
+                    document.getElementById("result").innerText = "Réessayez!";
                 }
             }
         }
@@ -106,3 +106,4 @@
     </script>
 </body>
 </html>
+
