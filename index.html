@@ -25,10 +25,6 @@
             font-style: italic;
             margin-top: 20px;
         }
-        #infoMessage {
-            font-size: 16px;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
@@ -65,9 +61,9 @@
         let attempts = 0;
         const maxAttempts = 5;
 
-        // Démarrer le jeu en révélant le premier indice
+        // Start the game by revealing the first clue
         window.onload = function() {
-            revealClue();  // Révéler le premier indice au démarrage du jeu
+            revealClue();  // Reveal the first clue when the game starts
         }
 
         function revealClue() {
@@ -81,21 +77,21 @@
             const userGuess = document.getElementById("guess").value.trim().toLowerCase();
             attempts++;
 
-            // Vérifier si la réponse de l'utilisateur correspond à une variation acceptable
+            // Check if the user's guess matches any acceptable variation
             if (correctAnswers.includes(userGuess)) {
-                document.getElementById("result").innerHTML = "Bonne réponse!";
-                document.getElementById("infoMessage").innerHTML = 'Pour plus d’informations à ce sujet, consultez la page <a href="https://infozone.omega.dce-eir.net/francais/r5041000/tlr/tlr09/drctrslblt-f.html" target="_blank">Responsabilité des administrateurs – Recouvrements des programmes fiscaux aux BSF/CNVR</a> ou <a href="https://infozone.omega.dce-eir.net/francais/r5044502/0000/5046/5046_601/tstyrknwldg/drctrslbltyssssmntchcklst-f.asp" target="_blank">Cotisation relative à la responsabilité des administrateurs – Liste de vérification</a>.';
+                document.getElementById("result").innerHTML = "Bonne réponse! Pour plus d’informations à ce sujet, consulter la page <a href='https://infozone.omega.dce-eir.net/francais/r5041000/tlr/tlr09/drctrslblt-f.html' target='_blank'>Responsabilité des administrateurs – Recouvrements des programmes fiscaux aux BSF/CNVR</a> ou <a href='https://infozone.omega.dce-eir.net/francais/r5044502/0000/5046/5046_601/tstyrknwldg/drctrslbltyssssmntchcklst-f.asp' target='_blank'>Cotisation relative à la responsabilité des administrateurs – Liste de vérification</a>.";
+                document.getElementById("infoMessage").innerText = "";
                 disableInputs();
             } else {
-                // Révéler le prochain indice automatiquement si la réponse est incorrecte
+                // Reveal the next clue automatically if the guess is wrong
                 if (currentClue < clues.length) {
                     revealClue();
                 }
 
-                // Si le nombre maximal de tentatives est atteint, afficher le message de fin
+                // If max attempts are reached, show the end message
                 if (attempts >= maxAttempts) {
-                    document.getElementById("result").innerText = "Mauvaise réponse, la bonne réponse est 'types d'administrateurs'!";
-                    document.getElementById("infoMessage").innerHTML = 'Pour plus d’informations à ce sujet, consultez la page <a href="https://infozone.omega.dce-eir.net/francais/r5041000/tlr/tlr09/drctrslblt-f.html" target="_blank">Responsabilité des administrateurs – Recouvrements des programmes fiscaux aux BSF/CNVR</a> ou <a href="https://infozone.omega.dce-eir.net/francais/r5044502/0000/5046/5046_601/tstyrknwldg/drctrslbltyssssmntchcklst-f.asp" target="_blank">Cotisation relative à la responsabilité des administrateurs – Liste de vérification</a>.';
+                    document.getElementById("result").innerHTML = "Mauvaise réponse, la bonne réponse est types d'administrateurs! Pour plus d’informations à ce sujet, consulter la page <a href='https://infozone.omega.dce-eir.net/francais/r5041000/tlr/tlr09/drctrslblt-f.html' target='_blank'>Responsabilité des administrateurs – Recouvrements des programmes fiscaux aux BSF/CNVR</a> ou <a href='https://infozone.omega.dce-eir.net/francais/r5044502/0000/5046/5046_601/tstyrknwldg/drctrslbltyssssmntchcklst-f.asp' target='_blank'>Cotisation relative à la responsabilité des administrateurs – Liste de vérification</a>.";
+                    document.getElementById("infoMessage").innerText = "";
                     disableInputs();
                 } else {
                     document.getElementById("result").innerText = "Réessayez!";
