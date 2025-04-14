@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeu d'association</title>
     <style>
-        body {https://github.com/Newsletter25/PinPoint1-EN/blob/main/index.html
+        body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 50px;
@@ -23,6 +23,10 @@
         #hint {
             font-size: 18px;
             font-style: italic;
+            margin-top: 20px;
+        }
+        #infoMessage {
+            font-size: 16px;
             margin-top: 20px;
         }
     </style>
@@ -61,9 +65,9 @@
         let attempts = 0;
         const maxAttempts = 5;
 
-        // Start the game by revealing the first clue
+        // Démarrer le jeu en révélant le premier indice
         window.onload = function() {
-            revealClue();  // Reveal the first clue when the game starts
+            revealClue();  // Révéler le premier indice au démarrage du jeu
         }
 
         function revealClue() {
@@ -77,21 +81,21 @@
             const userGuess = document.getElementById("guess").value.trim().toLowerCase();
             attempts++;
 
-            // Check if the user's guess matches any acceptable variation
+            // Vérifier si la réponse de l'utilisateur correspond à une variation acceptable
             if (correctAnswers.includes(userGuess)) {
-                document.getElementById("result").innerText = "Bonne réponse! Pour plus d’informations à ce sujet, consulter la page ______________";
-                document.getElementById("infoMessage").innerText = "";
+                document.getElementById("result").innerHTML = "Bonne réponse!";
+                document.getElementById("infoMessage").innerHTML = 'Pour plus d’informations à ce sujet, consultez la page <a href="https://infozone.omega.dce-eir.net/francais/r5041000/tlr/tlr09/drctrslblt-f.html" target="_blank">Responsabilité des administrateurs – Recouvrements des programmes fiscaux aux BSF/CNVR</a> ou <a href="https://infozone.omega.dce-eir.net/francais/r5044502/0000/5046/5046_601/tstyrknwldg/drctrslbltyssssmntchcklst-f.asp" target="_blank">Cotisation relative à la responsabilité des administrateurs – Liste de vérification</a>.';
                 disableInputs();
             } else {
-                // Reveal the next clue automatically if the guess is wrong
+                // Révéler le prochain indice automatiquement si la réponse est incorrecte
                 if (currentClue < clues.length) {
                     revealClue();
                 }
 
-                // If max attempts are reached, show the end message
+                // Si le nombre maximal de tentatives est atteint, afficher le message de fin
                 if (attempts >= maxAttempts) {
-                    document.getElementById("result").innerText = "Mauvaise réponse, la bonne réponse est types d'administrateurs!";
-                    document.getElementById("infoMessage").innerText = "For more information about this topic, refer to the … page / Pour plus d’informations à ce sujet, consulter la page";
+                    document.getElementById("result").innerText = "Mauvaise réponse, la bonne réponse est 'types d'administrateurs'!";
+                    document.getElementById("infoMessage").innerHTML = 'Pour plus d’informations à ce sujet, consultez la page <a href="https://infozone.omega.dce-eir.net/francais/r5041000/tlr/tlr09/drctrslblt-f.html" target="_blank">Responsabilité des administrateurs – Recouvrements des programmes fiscaux aux BSF/CNVR</a> ou <a href="https://infozone.omega.dce-eir.net/francais/r5044502/0000/5046/5046_601/tstyrknwldg/drctrslbltyssssmntchcklst-f.asp" target="_blank">Cotisation relative à la responsabilité des administrateurs – Liste de vérification</a>.';
                     disableInputs();
                 } else {
                     document.getElementById("result").innerText = "Réessayez!";
@@ -106,4 +110,3 @@
     </script>
 </body>
 </html>
-
