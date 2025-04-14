@@ -9,20 +9,23 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 50px;
-            font-size: 16px; /* Set the base font size for the body */
         }
         .clue {
             display: none;
             margin: 10px;
             font-size: 18px;
         }
-        #result, #infoMessage {
-            font-size: 20px; 
+        #result {
+            font-size: 20px;
             font-weight: bold;
             margin-top: 20px;
         }
         #hint {
-            font-size: 18px; 
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        #infoMessage {
+            font-size: 16px;
             margin-top: 20px;
         }
     </style>
@@ -32,14 +35,14 @@
     <p>Dans ce jeu d'association de mots, l'objectif est d'essayer de deviner la catégorie ou le thème commun qui relie une série de cinq mots. L'objectif est de deviner la bonne catégorie avec le moins d'indices possible. Pour chaque mauvaise réponse, un nouvel indice (mot) est révélé pour vous aider à affiner la réponse. Si vous devinez correctement la catégorie, vous gagnez le jeu et la réponse s'affiche. Si vous épuisez les cinq indices sans deviner la bonne catégorie, vous perdez le jeu et la réponse s'affiche.</p>
 
     <!-- Hint Message -->
-    <p id="hint">Indice : Types de _____________</p>
+    <p id="hint">Indice: Types de _____________</p>
 
     <div id="clues">
-        <p class="clue">Indice 1: Actif</p>
-        <p class="clue">Indice 2: Passif</p>
-        <p class="clue">Indice 3: Externe</p>
-        <p class="clue">Indice 4: Désigné</p>
-        <p class="clue">Indice 5: De fait</p>
+        <p class="clue">Clue 1: Actif</p>
+        <p class="clue">Clue 2: Passif</p>
+        <p class="clue">Clue 3: Externe</p>
+        <p class="clue">Clue 4: Désigné</p>
+        <p class="clue">Clue 5: De fait</p>
     </div>
 
     <div>
@@ -55,8 +58,11 @@
         const clues = document.querySelectorAll('.clue');
         const correctAnswers = [
             "administrateur", "administrateurs", 
+            "administratrice", "administratrices",
             "types d’administrateurs", "type d’administrateur", 
-            "types d’administrateur", "type d’administrateurs"
+            "types d’administrateur", "type d’administrateurs",
+            "types d’administratrices", "type d’administratrice", 
+            "types d’administratrice", "type d’administratrices"
         ];
         let attempts = 0;
         const maxAttempts = 5;
@@ -90,8 +96,8 @@
 
                 // If max attempts are reached, show the end message
                 if (attempts >= maxAttempts) {
-                    document.getElementById("result").innerHTML = "Mauvaise réponse! La bonne réponse est types d'administrateurs!";
-                    document.getElementByID("infoMessage").innerHTML = 'Pour plus de renseignements, allez à <a href='https://infozone.omega.dce-eir.net/francais/r5041000/tlr/tlr09/drctrslblt-f.html' target='_blank'>Responsabilité des administrateurs – Recouvrements des programmes fiscaux aux BSF/CNVR</a> ou <a href='https://infozone.omega.dce-eir.net/francais/r5044502/0000/5046/5046_601/tstyrknwldg/drctrslbltyssssmntchcklst-f.asp' target='_blank'>Cotisation relative à la responsabilité des administrateurs – Liste de vérification</a>.';
+                    document.getElementById("result").innerText = "Mauvaise réponse, la bonne réponse est types d'administrateurs!";
+                    document.getElementById("infoMessage").innerHTML = 'Pour plus de renseignements, allez à <a href='https://infozone.omega.dce-eir.net/francais/r5041000/tlr/tlr09/drctrslblt-f.html' target='_blank'>Responsabilité des administrateurs – Recouvrements des programmes fiscaux aux BSF/CNVR</a> ou <a href='https://infozone.omega.dce-eir.net/francais/r5044502/0000/5046/5046_601/tstyrknwldg/drctrslbltyssssmntchcklst-f.asp' target='_blank'>Cotisation relative à la responsabilité des administrateurs – Liste de vérification</a>.';
                     disableInputs();
                 } else {
                     document.getElementById("result").innerText = "Réessayez!";
@@ -106,4 +112,3 @@
     </script>
 </body>
 </html>
-
