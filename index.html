@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
-    <title>PinPoint Game</title> 
+    <title>Jeu d'association</title> 
 
     <style> 
 
@@ -64,29 +64,29 @@
 
 <body> 
 
-    <h1>Pinpoint Game</h1> 
+    <h1>Jeu d'association</h1> 
 
-    <p>Pinpoint is a word association game where the objective is the try to guess the common category or theme that links a set of five words. The objective is to guess the correct category with as few clues revealed as possible. For each incorrect guess, a new clue (word) is revealed to help you narrow down the answer. If you correctly guess the category, you win the game and the answer is displayed. If you exhaust all five clues without guessing the correct category, you lose the game and the answer is displayed.</p> 
+    <p>Dans ce jeu d'association de mots, l'objectif est d'essayer de deviner la catégorie ou le thème commun qui relie une série de cinq mots. L'objectif est de deviner la bonne catégorie avec le moins d'indices possible. Pour chaque mauvaise réponse, un nouvel indice (mot) est révélé pour vous aider à affiner la réponse. Si vous devinez correctement la catégorie, vous gagnez le jeu et la réponse s'affiche. Si vous épuisez les cinq indices sans deviner la bonne catégorie, vous perdez le jeu et la réponse s'affiche.</p> 
 
  
 
     <!-- Hint Message --> 
 
-    <p id="hint">Hint: Types of _____________</p> 
+    <p id="hint">Indice: Types de _____________</p> 
 
  
 
     <div id="clues"> 
 
-        <p class="clue">Clue 1: Active</p> 
+        <p class="clue">Indice 1: Actif</p> 
 
-        <p class="clue">Clue 2: Passive</p> 
+        <p class="clue">Indice 2: Passif</p> 
 
-        <p class="clue">Clue 3: Outside</p> 
+        <p class="clue">Indice 3: Externe</p> 
 
-        <p class="clue">Clue 4: Nominee</p> 
+        <p class="clue">Indice 4: Désigné</p> 
 
-        <p class="clue">Clue 5: De Facto</p> 
+        <p class="clue">Indice 5: De fait</p> 
 
     </div> 
 
@@ -94,9 +94,9 @@
 
     <div> 
 
-        <input type="text" id="guess" placeholder="Enter your guess"> 
+        <input type="text" id="guess" placeholder="Entrez votre réponse"> 
 
-        <button onclick="checkGuess()">Submit Guess</button> 
+        <button onclick="checkGuess()">Valider</button> 
 
     </div> 
 
@@ -116,11 +116,11 @@
 
         const correctAnswers = [ 
 
-            "director", "directors",  
+            "administrateur", "administrateurs",  
 
-            "types of directors", "type of director",  
+            "types d'administrateurs", "type d'administrateur",  
 
-            "types of director", "type of directors" 
+            "types d'administrateur", "type d'administrateurs" 
 
         ]; 
 
