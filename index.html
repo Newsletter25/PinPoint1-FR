@@ -1,112 +1,223 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeu d'association</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        .clue {
-            display: none;
-            margin: 10px;
-            font-size: 18px;
-        }
-        #result {
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        #hint {
-            font-size: 18px;
-            margin-top: 20px;
-        }
-        #infoMessage {
-            font-size: 16px;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Jeu d'association</h1>
-    <p>Dans ce jeu d'association de mots, l'objectif est d'essayer de deviner la catégorie ou le thème commun qui relie une série de cinq mots. L'objectif est de deviner la bonne catégorie avec le moins d'indices possible. Pour chaque mauvaise réponse, un nouvel indice (mot) est révélé pour vous aider à affiner la réponse. Si vous devinez correctement la catégorie, vous gagnez le jeu et la réponse s'affiche. Si vous épuisez les cinq indices sans deviner la bonne catégorie, vous perdez le jeu et la réponse s'affiche.</p>
+<!DOCTYPE html> 
 
-    <!-- Hint Message -->
-    <p id="hint">Indice: Types de _____________</p>
+<html lang="en"> 
 
-    <div id="clues">
-        <p class="clue">Indice 1: Actif</p>
-        <p class="clue">Indice 2: Passif</p>
-        <p class="clue">Indice 3: Externe</p>
-        <p class="clue">Indice 4: Désigné</p>
-        <p class="clue">Indice 5: De fait</p>
-    </div>
+<head> 
 
-    <div>
-        <input type="text" id="guess" placeholder="Entrez votre réponse">
-        <button onclick="checkGuess()">Valider</button>
-    </div>
+    <meta charset="UTF-8"> 
 
-    <p id="result"></p>
-    <p id="infoMessage" style="font-weight: bold;"></p>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
-    <script>
-        let currentClue = 0;
-        const clues = document.querySelectorAll('.clue');
-        const correctAnswers = [
-            "administrateur", "administrateurs", 
-            "types d’administrateurs", "type d’administrateur", 
-            "types d’administrateur", "type d’administrateurs"
-        ];
-        let attempts = 0;
-        const maxAttempts = 5;
+    <title>PinPoint Game</title> 
 
-        // Start the game by revealing the first clue
-        window.onload = function() {
-            revealClue();  // Reveal the first clue when the game starts
-        }
+    <style> 
 
-        function revealClue() {
-            if (currentClue < clues.length) {
-                clues[currentClue].style.display = 'block';
-                currentClue++;
-            }
-        }
+        body { 
 
-        function checkGuess() {
-            const userGuess = document.getElementById("guess").value.trim().toLowerCase();
-            attempts++;
+            font-family: Arial, sans-serif; 
 
-            // Check if the user's guess matches any acceptable variation
-            if (correctAnswers.includes(userGuess)) {
-                document.getElementById("result").innerHTML = "Bonne réponse!"
-                document.getElementById("infoMessage").innerHTML = 'Pour plus de renseignements, allez à <a href='https://infozone.omega.dce-eir.net/francais/r5041000/tlr/tlr09/drctrslblt-f.html' target='_blank'>Responsabilité des administrateurs – Recouvrements des programmes fiscaux aux BSF/CNVR</a> ou <a href='https://infozone.omega.dce-eir.net/francais/r5044502/0000/5046/5046_601/tstyrknwldg/drctrslbltyssssmntchcklst-f.asp' target='_blank'>Cotisation relative à la responsabilité des administrateurs – Liste de vérification</a>.";
-                disableInputs();
-            } else {
-                // Reveal the next clue automatically if the guess is wrong
-                if (currentClue < clues.length) {
-                    revealClue();
-                }
+            text-align: center; 
 
-                // If max attempts are reached, show the end message
-                if (attempts >= maxAttempts) {
-                    document.getElementById("result").innerHTML = "Mauvaise réponse, la bonne réponse est types d'administrateurs!";
-                    document.getElementById("infoMessage").innerHTML = 'Pour plus de renseignements, allez à <a href='https://infozone.omega.dce-eir.net/francais/r5041000/tlr/tlr09/drctrslblt-f.html' target='_blank'>Responsabilité des administrateurs – Recouvrements des programmes fiscaux aux BSF/CNVR</a> ou <a href='https://infozone.omega.dce-eir.net/francais/r5044502/0000/5046/5046_601/tstyrknwldg/drctrslbltyssssmntchcklst-f.asp' target='_blank'>Cotisation relative à la responsabilité des administrateurs – Liste de vérification</a>.";
-                    disableInputs();
-                } else {
-                    document.getElementById("result").innerText = "Réessayez!";
-                }
-            }
-        }
+            margin: 50px; 
 
-        function disableInputs() {
-            document.getElementById("guess").disabled = true;
-            document.querySelector("button[onclick='checkGuess()']").disabled = true;
-        }
-    </script>
-</body>
-</html>
- 
+        } 
+
+        .clue { 
+
+            display: none; 
+
+            margin: 10px; 
+
+            font-size: 18px; 
+
+        } 
+
+        #result { 
+
+            font-size: 20px; 
+
+            font-weight: bold; 
+
+            margin-top: 20px; 
+
+        } 
+
+        #hint { 
+
+            font-size: 18px; 
+
+            margin-top: 20px; 
+
+        } 
+
+        #infoMessage { 
+
+            font-size: 16px; 
+
+            margin-top: 20px; 
+
+        } 
+
+    </style> 
+
+</head> 
+
+<body> 
+
+    <h1>Pinpoint Game</h1> 
+
+    <p>Pinpoint is a word association game where the objective is the try to guess the common category or theme that links a set of five words. The objective is to guess the correct category with as few clues revealed as possible. For each incorrect guess, a new clue (word) is revealed to help you narrow down the answer. If you correctly guess the category, you win the game and the answer is displayed. If you exhaust all five clues without guessing the correct category, you lose the game and the answer is displayed.</p> 
+
+ 
+
+    <!-- Hint Message --> 
+
+    <p id="hint">Hint: Types of _____________</p> 
+
+ 
+
+    <div id="clues"> 
+
+        <p class="clue">Clue 1: Active</p> 
+
+        <p class="clue">Clue 2: Passive</p> 
+
+        <p class="clue">Clue 3: Outside</p> 
+
+        <p class="clue">Clue 4: Nominee</p> 
+
+        <p class="clue">Clue 5: De Facto</p> 
+
+    </div> 
+
+ 
+
+    <div> 
+
+        <input type="text" id="guess" placeholder="Enter your guess"> 
+
+        <button onclick="checkGuess()">Submit Guess</button> 
+
+    </div> 
+
+ 
+
+    <p id="result"></p> 
+
+    <p id="infoMessage" style="font-weight: bold;"></p> 
+
+ 
+
+    <script> 
+
+        let currentClue = 0; 
+
+        const clues = document.querySelectorAll('.clue'); 
+
+        const correctAnswers = [ 
+
+            "director", "directors",  
+
+            "types of directors", "type of director",  
+
+            "types of director", "type of directors" 
+
+        ]; 
+
+        let attempts = 0; 
+
+        const maxAttempts = 5; 
+
+ 
+
+        // Start the game by revealing the first clue 
+
+        window.onload = function() { 
+
+            revealClue();  // Reveal the first clue when the game starts 
+
+        } 
+
+ 
+
+        function revealClue() { 
+
+            if (currentClue < clues.length) { 
+
+                clues[currentClue].style.display = 'block'; 
+
+                currentClue++; 
+
+            } 
+
+        } 
+
+ 
+
+        function checkGuess() { 
+
+            const userGuess = document.getElementById("guess").value.trim().toLowerCase(); 
+
+            attempts++; 
+
+ 
+
+            // Check if the user's guess matches any acceptable variation 
+
+            if (correctAnswers.includes(userGuess)) { 
+
+                document.getElementById("result").innerHTML = "Correct!"; 
+
+                document.getElementById("infoMessage").innerHTML = 'For more information, go to <a href="https://infozone.omega.dce-eir.net/english/r5041000/tlr/tlr09/drctrslblt-e.html" target="_blank">Directors\' liability – Tax programs TSO/NVCC collections</a> or <a href="https://infozone.omega.dce-eir.net/english/r5044502/0000/5046/5046_601/tstyrknwldg/drctrslbltyssssmntchcklst-e.asp" target="_blank">Directors’ liability assessment – Checklist</a>.'; 
+
+                disableInputs(); 
+
+            } else { 
+
+                // Reveal the next clue automatically if the guess is wrong 
+
+                if (currentClue < clues.length) { 
+
+                    revealClue(); 
+
+                } 
+
+ 
+
+                // If max attempts are reached, show the end message 
+
+                if (attempts >= maxAttempts) { 
+
+                    document.getElementById("result").innerText = "Incorrect, the correct answer is Types of Directors!"; 
+
+                    document.getElementById("infoMessage").innerHTML = 'For more information, go to <a href="https://infozone.omega.dce-eir.net/english/r5041000/tlr/tlr09/drctrslblt-e.html" target="_blank">Directors\' liability – Tax programs TSO/NVCC collections</a> or <a href="https://infozone.omega.dce-eir.net/english/r5044502/0000/5046/5046_601/tstyrknwldg/drctrslbltyssssmntchcklst-e.asp" target="_blank">Directors’ liability assessment – Checklist</a>.'; 
+
+                    disableInputs(); 
+
+                } else { 
+
+                    document.getElementById("result").innerText = "Try again!"; 
+
+                } 
+
+            } 
+
+        } 
+
+ 
+
+        function disableInputs() { 
+
+            document.getElementById("guess").disabled = true; 
+
+            document.querySelector("button[onclick='checkGuess()']").disabled = true; 
+
+        } 
+
+    </script> 
+
+</body> 
+
+</html> 
+
+ 
